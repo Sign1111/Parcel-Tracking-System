@@ -1,0 +1,139 @@
+﻿<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+    /* Notifications Styling */
+    .alert-info {
+        background-color: #e9f7fd;
+        border-color: #bee5eb;
+        color: #0c5460;
+        border-radius: 8px;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .list-group-item {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        transition: background-color 0.3s ease;
+    }
+
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-group-item:hover {
+            background-color: #f7f9fb;
+        }
+
+    
+    #unreadBadge {
+        font-size: 14px;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .list-group-item {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+        .list-group-item:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+
+
+    .btn-success {
+        border-radius: 20px;
+        font-size: 0.875rem;
+        padding: 4px 12px;
+    }
+
+    .alert-secondary {
+        background-color: #f8f9fa;
+        color: #6c757d;
+        border-radius: 8px;
+    }
+    .badge {
+    animation: pulse 1s infinite;
+}
+
+@@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+    #<style >
+    #unreadBadge {
+        font-size: 14px;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .list-group-item {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .list-group-item div {
+            margin-bottom: 5px;
+        }
+
+            .list-group-item div strong {
+                font-weight: bold;
+            }
+</style>
+
+
+
+
+<div class="container mt-5">
+    <h2>Welcome to Your Dashboard</h2>
+    <p>You have @ViewBag.UnreadMessagesCount unread message(s).</p>
+
+    <!-- Link to navigate to User Inbox -->
+    <a href="@Url.Action("UserInbox", "Chat")" class="btn btn-primary">
+        Go to User Inbox
+    </a>
+</div>
+ 
+    @foreach (var message in Model)
+    {
+    <div class="list-group-item">
+        <h5>From: @message.Sender</h5>
+        <p><strong>Message:</strong> @message.Content</p>
+        <p><strong>Sent At:</strong> @message.SentAt.ToString("yyyy-MM-dd HH:mm")</p>
+
+            @if (!message.IsRead)
+            {
+            <form method="post" action="@Url.Action("MarkAsRead", "Chat", new { messageId = message.Id })">
+                <button type="submit" class="btn btn-sm btn-primary">Mark as Read</button>
+            </form>
+            }
+    </div>
+    }
+
+<script>
+    // Function to fetch new messages via AJAX
+    function checkForNewMessages() {
+        // Use AJAX to fetch the messages from the server
+        $.ajax({
+            url: '@Url.Action("GetNewMessages", "Chat")',  // The URL of your action
+            type: 'GET',
+            success: function (data) {
+                // Update the message section with the new messages
+                $('#messagesContainer').html(data);
+            },
+            error: function (error) {
+                console.error("Error fetching new messages:", error);
+            }
+        });
+    }
+
+    // Poll every 5 seconds (5000 milliseconds) for new messages
+    setInterval(checkForNewMessages, 5000);  // Adjust time interval as needed
+</script>

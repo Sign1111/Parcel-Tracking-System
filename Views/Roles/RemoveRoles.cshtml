@@ -1,0 +1,26 @@
+﻿@model RemoveRolesViewModel
+
+<h2>Remove Roles for @Model.UserName</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<form asp-action="RemoveRoles" method="post">
+    <input type="hidden" name="UserId" value="@Model.UserId" />
+
+    <div class="form-group mt-3">
+        <label for="SelectedRoles">Assigned Roles</label>
+        <select class="form-control" id="SelectedRoles" name="SelectedRoles" multiple>
+            @foreach (var role in Model.AssignedRoles)
+            {
+                <option value="@role.Value">@role.Text</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-danger mt-3">Remove Selected Roles</button>
+</form>

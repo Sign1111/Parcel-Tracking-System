@@ -1,0 +1,192 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.EntityFrameworkCore; 
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+
+<style>body {
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+h1, h3 {
+    color: #007bff;
+}
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+}
+
+footer p {
+    margin: 0;
+    padding: 1rem 0;
+}
+
+.list-group-item {
+    font-size: 1rem;
+}
+
+.sidebar {
+    background-color: #f8f9fa;
+    border-right: 2px solid #ddd;
+}
+
+.sidebar .nav-link {
+    padding: 1.2rem 1.5rem;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.sidebar .nav-link.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.sidebar .nav-item {
+    margin-bottom: 1rem;
+}
+
+.sidebar .nav-item .bi {
+    margin-right: 8px;
+}
+
+@@media (max-width: 767px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        display: none;
+    }
+
+    .sidebar.active {
+        display: block;
+    }
+}
+</style>
+
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h1>Welcome to the Admin Dashboard</h1>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<div class="row mt-4">
+    <!-- Total Users Card -->
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card shadow-sm rounded">
+            <div class="card-body">
+                <h5 class="card-title">Total Users</h5>
+                <p class="card-text"><strong>@ViewBag.TotalUsers</strong></p>
+                <a href="/Roles/ManageUsers" class="btn btn-primary">Manage Users</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mt-4">
+        <!-- Total AssignRoles Card -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card shadow-sm rounded">
+                <div class="card-body">
+                    <h5 class="card-title">Roles</h5>
+                    <p class="card-text"><strong>@ViewBag.TotalAssignRoles</strong></p>
+                    <a href="/Roles/AssignRole" class="btn btn-primary">AssignRoles</a>
+                </div>
+            </div>
+        </div>
+
+    <!-- Total Roles Card -->
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card shadow-sm rounded">
+            <div class="card-body">
+                <h5 class="card-title">Total Roles</h5>
+                <p class="card-text"><strong>@ViewBag.TotalRoles</strong></p>
+                <a href="/Roles/Index" class="btn btn-primary">Manage Roles</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Users Information</h3>
+<div class="table-responsive mt-4">
+    <table class="table table-bordered table-striped">
+        <thead>
+           <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>@string.Join(", ", user.Roles)</td>
+                <td>
+                            <a asp-action="EditRoles" asp-route-id="@user.Id" class="btn btn-warning btn-sm">Edit Roles</a>
+                            <a href="@Url.Action("RemoveRoles", "Admin", new { id = user.Id })" class="btn btn-primary btn-sm">Remove Roles</a>
+                            <form asp-action="DeleteRoles" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="@user.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">Delete Roles</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+
+
+      

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<UserRolesViewModel>
+
+<h1 class="text-center">Web Users</h1> <!-- Centered Heading -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th> <!-- Added ID Column -->
+            <th>User Name</th>
+            <th>Roles</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td> <!-- Display User ID -->
+                <td>@user.UserName</td>
+                <td>
+                    @if (user.Roles.Any())
+                    {
+                        <ul>
+                            @foreach (var role in user.Roles)
+                            {
+                                <li>@role</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <span>No roles assigned</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

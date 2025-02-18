@@ -1,0 +1,67 @@
+﻿@model List<Message>
+
+@{
+    ViewData["Title"] = "User Inbox";
+}
+
+<h2 class="mb-4">User Inbox</h2>
+
+<style>
+    .card {
+        border-radius: 10px;
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+</style>
+
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var message in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">From: @message.Sender</h6>
+                        <p class="card-text"><strong>Receiver:</strong> @message.Receiver</p>
+                        <p class="card-text"><strong>Message:</strong> @message.Content</p>
+                        <p class="text-muted"><small>Sent: @message.SentAt.ToString("yyyy-MM-dd HH:mm")</small></p>
+
+                        <!-- Reply Button -->
+                        <button class="btn btn-primary btn-sm" onclick="toggleReplyForm('replyForm_@message.Id')">Reply</button>
+
+                        <!-- Reply Form (Initially Hidden) -->
+                        <form id="replyForm_@message.Id" asp-action="Reply" asp-controller="Chat" method="post" style="display: none;" class="mt-3">
+                            <input type="hidden" name="MessageId" value="@message.Id" />
+                            <div class="form-group">
+                                <textarea name="Content" class="form-control" placeholder="Write your reply..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-sm mt-2">Send Reply</button>
+                            <button type="button" class="btn btn-secondary btn-sm mt-2" onclick="toggleReplyForm('replyForm_@message.Id')">Cancel</button>
+                        </form>
+
+                        <!-- Delete Button -->
+                        <form asp-action="DeleteMessage" asp-controller="Chat" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@message.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm mt-2" onclick="return confirm('Are you sure you want to delete this message?')">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No messages found.</p>
+}
+
+<script>
+    function toggleReplyForm(id) {
+        var form = document.getElementById(id);
+        form.style.display = (form.style.display === "none") ? "block" : "none";
+    }
+</script>

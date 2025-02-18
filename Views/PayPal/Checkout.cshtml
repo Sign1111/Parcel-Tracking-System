@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "PayPal Checkout";
+    var clientId = ViewData["ClientId"] as string;
+}
+
+<h2>PayPal Checkout</h2>
+<div id="paypal-button-container"></div>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AXqOCVECn2Yl9J-FbXE4Q-gJ8qkhXcaFdsoXM71Ll51QxJb5nEafhT3r3HNfpMiY7yOP47OfjEcXOzK0&currency=USD&commit=true"></script>
+<script>
+    paypal.Buttons({
+        style: {
+            layout: 'vertical',  // Default is horizontal
+            color: 'blue',      // Color of the button
+            shape: 'rect',      // Shape: pill or rect
+            label: 'paypal'     // Label: 'checkout', 'paypal', etc.
+        },
+        createOrder: function () {
+            // This function sets up the transaction
+            return fetch('/PayPal/CreateOrder', {
+                method: 'post'
+            }).then(response => response.json())
+                .then(order => order.id); // Return the order ID to PayPal
+        },
+        onApprove: function (data) {
+            // Capture the payment
+            return fetch('/PayPal/CaptureOrder', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ orderId: data.orderID })
+            })
+                .then(response => response.json())
+                .then(details => {
+                    // Show a success message or redirect to a success page
+                    document.getElementById('payment-status').style.display = 'block';
+                    document.getElementById('payment-status').innerHTML =
+                        `<h3>Thank you, ${details.payer.name.given_name}! Your payment of ${details.purchase_units[0].amount.value} ${details.purchase_units[0].amount.currency_code} was successful.</h3>`;
+                })
+                .catch(error => {
+                    // Handle errors
+                    console.error('Error capturing the order:', error);
+                    alert('There was an error processing your payment.');
+                });
+        }
+    }).render('#paypal-button-container');
+</script>

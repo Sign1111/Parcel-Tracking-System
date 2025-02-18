@@ -1,0 +1,396 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- SEO Meta -->
+    <meta name="keywords" content="Parcel Tracking, Logistics, Delivery Service" />
+    <meta name="description" content="Efficient and reliable parcel tracking and delivery services." />
+    <meta name="author" content="Adam" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/images/fevicon.png" type="image/png" />
+
+    <title>About Us - Parcel Tracking System</title>
+
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Additional Styles -->
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            background-color: papayawhip;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar */
+        #admin-sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100vh;
+            background-color: #212529;
+            color: #ffffff;
+            transition: left 0.3s ease;
+            z-index: 1050;
+        }
+
+            #admin-sidebar.active {
+                left: 0;
+            }
+
+            #admin-sidebar h5 {
+                padding: 15px;
+                margin: 0;
+                background-color: #007bff;
+                text-align: center;
+            }
+
+            #admin-sidebar .nav-link {
+                color: #ffffff;
+                display: flex;
+                align-items: center;
+                padding: 10px 15px;
+            }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1049;
+        }
+
+            #overlay.active {
+                display: block;
+            }
+
+        /* Dark Mode */
+        .dark-mode {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+
+        .toggle-sidebar {
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .btn-close {
+            background-color: transparent;
+            border: none;
+            font-size: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom shadow-sm mb-3">
+            <div class="container-fluid">
+                <span class="toggle-sidebar" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </span>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Parcel Tracking</a>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Ourwork" asp-action="Index">Service</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Chat" asp-action="UserDashboard">Notification</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Chat" asp-action="UserInbox">Chat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="PayPal" asp-action="EnterAmount">Payment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Contact" asp-action="Index">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="About" asp-action="Index">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar -->
+    @if (User.IsInRole("Admin"))
+    {
+        <div id="admin-sidebar">
+            <h5>Admin Panel</h5>
+            <button class="btn-close position-absolute top-0 end-0 m-2" onclick="toggleSidebar()" aria-label="Close">×</button>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="bi bi-house"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Admin" asp-action="Dashboard">
+                        <i class="bi bi-speedometer2"></i> Admin Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Chat" asp-action="AdminInbox">
+                        <i class="bi bi-envelope"></i> Admin Inbox
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Dashboard" asp-action="Index">
+                        <i class="bi bi-box-seam"></i> Parcel Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Parcels" asp-action="Index">
+                        <i class="bi bi-truck"></i> Parcel
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="overlay" onclick="toggleSidebar()"></div>
+    }
+
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+            <div class="header_top">
+                <div class="container-fluid ">
+                    <div class="contact_nav">
+                        <a href="">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>
+                                Call : (+234) 8138487360
+                            </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>
+                                Email : adamhammed12@gmail.com
+                            </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>
+                                Location
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="header_bottom">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg custom_nav-container ">
+                        <a class="navbar-brand" href="index.html">
+                            <span>
+                                Parcel System
+                            </span>
+                        </a>
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class=""> </span>
+                        </button>
+
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+
+
+        <section class="about_section layout_padding-bottom">
+            <div class="container  ">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="detail-box">
+                            <div class="heading_container">
+                                <h2>
+                                    About <span>Us</span>
+                                </h2>
+                            </div>
+                            <p>
+                                At Parcel System, we are more than just a logistics provider – we are your trusted partner in delivering goods across the globe. With a focus on efficiency, reliability, and sustainability, we offer a wide range of transportation services, from air and truck to rail and cargo solutions. Whether it’s a single parcel or large-scale shipments, we ensure your goods reach their destination safely and on time.
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="img-box">
+                            <img src="~/js/images/about-img.jpg" alt="">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <section class="info_section layout_padding2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 info_col">
+                        <div class="info_contact">
+                            <h4>
+                                Address
+                            </h4>
+                            <div class="contact_link_box">
+                                <a href="">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <span>
+                                        Location
+                                    </span>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <span>
+                                        Call +234 8138487360
+                                    </span>
+                                </a>
+                                <a href="mailto:adamhammed12@gmail.com">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <span>
+                                        adamhammed12@gmail.com
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="info_social">
+                            <a href="">
+                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fab fa-twitter" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+
+                                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 info_col">
+                        <div class="info_detail">
+                            <h4>
+                                Info
+                            </h4>
+                            <p>
+                                We proudly serve clients across a variety of industries, including:
+
+                                E-commerce: Helping online businesses ship products quickly and affordably.
+                                Manufacturing: Ensuring raw materials and finished goods are delivered on time and in optimal condition.
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2 mx-auto info_col">
+                        <div class="info_link_box">
+                            <h4>
+                                Links
+                            </h4>
+                            <div class="info_links">
+                                <a class="" asp-controller="Home" asp-action="Index">
+                                    <img src="~/js/images/nav-bullet.png" alt="">
+
+                                    Home
+                                </a>
+                                <a class="" asp-controller="About" asp-action="Index">
+                                    <img src="~/js/images/nav-bullet.png" alt="">
+
+                                    About
+                                </a>
+                                <a class="" asp-controller="Ourwork" asp-action="Index">
+
+                                    <img src="~/js/images/nav-bullet.png" alt="">
+                                    Services
+                                </a>
+                                <a class="" asp-controller="Contact" asp-action="Index">
+                                    <img src="~/js/images/nav-bullet.png" alt="">
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 info_col ">
+                        <h4>
+                            Subscribe
+                        </h4>
+                        <form action="#">
+                            <input type="text" placeholder="Enter email" />
+                            <button type="submit">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- end info section -->
+        <!-- footer section -->
+        <section class="footer_section">
+            <div class="container">
+                <p>
+                    &copy; <span id="displayYear"></span> All Rights Reserved By
+                    <a href="">Adam</a>
+                </p>
+            </div>
+        </section>
+
+        <script>
+            function toggleSidebar() {
+                const sidebar = document.getElementById("admin-sidebar");
+                const overlay = document.getElementById("overlay");
+                sidebar.classList.toggle("active");
+                overlay.classList.toggle("active");
+            }
+
+            document.getElementById("displayYear").textContent = new Date().getFullYear();
+        </script>
+</body>
+
+</html>

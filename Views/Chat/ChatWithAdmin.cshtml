@@ -1,0 +1,39 @@
+﻿@model List<Parcel_Tracking.Models.Message>
+
+@{
+    ViewData["Title"] = "Chat with Admin";
+}
+
+<h2>Chat with Admin</h2>
+
+@if (!string.IsNullOrEmpty(TempData["ErrorMessage"] as string))
+{
+    <div class="alert alert-warning">@TempData["ErrorMessage"]</div>
+}
+
+<div class="chat-box border rounded p-3" style="max-height: 400px; overflow-y: auto;">
+    @foreach (var message in Model)
+    {
+        <div class="mb-2 p-2 border rounded @(message.Sender == User.Identity.Name ? "bg-primary text-white" : "bg-light")">
+            <strong>@message.Sender:</strong> @message.Content
+            <div class="text-muted" style="font-size: 12px;">@message.SentAt.ToString("g")</div>
+        </div>
+    }
+</div>
+
+@if (Model.Any()) //<!-- Only show reply form if messages exist -->
+{
+    <form asp-action="ReplyToAdmin" method="post" class="mt-3">
+        <input type="hidden" name="receiver" value="@ViewBag.Admin" />
+
+        <div class="form-group">
+            <textarea class="form-control" name="content" placeholder="Type your reply..." rows="3" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">Send Reply</button>
+    </form>
+}
+else
+{
+    <div class="alert alert-info mt-3">You cannot start a conversation. Please wait for an Admin message.</div>
+}

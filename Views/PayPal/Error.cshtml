@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Payment Error";
+}
+<h2>Error</h2>
+<p>@ViewBag.Error</p>
+@if (ViewBag.Details != null)
+{
+    <pre>@ViewBag.Details</pre>
+}

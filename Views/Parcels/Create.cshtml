@@ -1,0 +1,125 @@
+﻿@model Parcel_Tracking.Models.Parcel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<h1>Create</h1>
+
+<h4>Parcel</h4>
+<hr />
+<style>
+    .styled-dropdown {
+        border: 2px solid #007bff;
+        background-color: #f8f9fa;
+        color: #495057;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 8px;
+    }
+
+        .styled-dropdown option {
+            background-color: #ffffff;
+            color: #000;
+            padding: 8px;
+        }
+</style>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CreatedBy" class="control-label"></label>
+                <input asp-for="CreatedBy" class="form-control" />
+                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" class="form-control" />
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrackingNumber" class="control-label"></label>
+                <input asp-for="TrackingNumber" class="form-control" />
+                <button onclick="displayTrackingNumber()">Generate Tracking Number</button>
+                <p>Tracking Number: <span id="trackingNumber"></span></p>
+
+                <span asp-validation-for="TrackingNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecipientName" class="control-label"></label>
+                <input asp-for="RecipientName" class="form-control" />
+                <span asp-validation-for="RecipientName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label">Status</label>
+                <select asp-for="Status" class="form-control styled-dropdown">
+                    @foreach (var status in ViewBag.StatusOptions)
+                    {
+                        <option value="@status">@status</option>
+                    }
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingMethod" class="control-label"></label>
+                <input asp-for="ShippingMethod" class="form-control" />
+                <span asp-validation-for="ShippingMethod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippedAt" class="control-label"></label>
+                <input asp-for="ShippedAt" class="form-control" />
+                <span asp-validation-for="ShippedAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeliveredAt" class="control-label"></label>
+                <input asp-for="DeliveredAt" class="form-control" />
+                <span asp-validation-for="DeliveredAt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecipientEmail" class="control-label"></label>
+                <input asp-for="RecipientEmail" class="form-control" />
+                <span asp-validation-for="RecipientEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    function generateTrackingNumber() {
+        const prefix = "TRK";
+        const datePart = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+        const randomPart = Math.floor(100000 + Math.random() * 900000);
+        return `${prefix}-${datePart}-${randomPart}`;
+    }
+
+    function displayTrackingNumber() {
+        const trackingNumber = generateTrackingNumber();
+        document.getElementById("trackingNumber").textContent = trackingNumber;
+    }
+</script>

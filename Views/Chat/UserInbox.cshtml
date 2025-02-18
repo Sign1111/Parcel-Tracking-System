@@ -1,0 +1,117 @@
+﻿@model List<Message>
+
+@{
+    ViewData["Title"] = "User Inbox";
+}
+
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+
+
+<h2 class="mb-4 text-center">📩 Inbox Chat</h2>
+
+<style>
+    .card {
+        border-radius: 12px;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        border: none;
+    }
+
+    .card:hover {
+        transform: scale(1.02);
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .reply-card {
+        background: #f8f9fa;
+        border-left: 4px solid #007bff;
+    }
+
+    .btn {
+        transition: all 0.2s ease-in-out;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .message-meta {
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+
+    .d-flex.flex-wrap {
+        gap: 10px;
+    }
+
+    media (max-width: 576px) {
+        .d-flex {
+            flex-direction: column;
+        }
+    }
+</style>
+
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var message in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm @(message.ReplyToMessageId != null ? "reply-card" : "")">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">From: <strong>@message.Sender</strong></h6>
+                        <p class="message-meta">To: <strong>@message.Receiver</strong></p>
+
+                        @if (message.ReplyToMessageId != null && message.ReplyTo != null)
+                        {
+                            <p class="text-muted small">🔄 Replying to: <em>"@message.ReplyTo?.Content"</em></p>
+                        }
+
+                        <p class="card-text"><strong>📌 Message:</strong> @message.Content</p>
+                        <p class="message-meta">🕒 Sent: @message.SentAt.ToString("yyyy-MM-dd HH:mm")</p>
+
+                        <!-- Reply & Delete Buttons -->
+                        <div class="d-flex flex-wrap mt-3">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#replyForm-@message.Id">
+                                ✉️ Reply
+                            </button>
+
+                            <form asp-controller="Chat" asp-action="DeleteMessage" method="post" onsubmit="return confirm('Are you sure you want to delete this message?');">
+                                <input type="hidden" name="MessageId" value="@message.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">🗑️ Delete</button>
+                            </form>
+                        </div>
+
+                        <!-- Reply Form -->
+                        <div class="collapse mt-3" id="replyForm-@message.Id">
+                            <form asp-action="Reply" asp-controller="Chat" method="post">
+                                <input type="hidden" name="MessageId" value="@message.Id" />
+                                <div class="mb-2">
+                                    <textarea name="Content" class="form-control" placeholder="Write your reply..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-success btn-sm">📤 Send Reply</button>
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="collapse" data-bs-target="#replyForm-@message.Id">❌ Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="text-center mt-5">
+        <h4 class="text-muted">📭 No messages found.</h4>
+        <p class="text-muted">Your inbox is empty. Messages from Admin or Tracking Number updates will appear here.</p>
+    </div>
+}

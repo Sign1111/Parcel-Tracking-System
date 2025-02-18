@@ -1,0 +1,864 @@
+﻿@{
+
+    Layout = null;
+}
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- SEO Meta -->
+    <meta name="keywords" content="Parcel Tracking, Logistics, Delivery Service" />
+    <meta name="description" content="Efficient and reliable parcel tracking and delivery services." />
+    <meta name="author" content="Adam" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/images/fevicon.png" type="image/png" />
+
+    <title>Home - Parcel Tracking System</title>
+
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Additional Styles -->
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            background-color: papayawhip;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar */
+        #admin-sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100vh;
+            background-color: #212529;
+            color: #ffffff;
+            transition: left 0.3s ease;
+            z-index: 1050;
+        }
+
+            #admin-sidebar.active {
+                left: 0;
+            }
+
+            #admin-sidebar h5 {
+                padding: 15px;
+                margin: 0;
+                background-color: #007bff;
+                text-align: center;
+            }
+
+            #admin-sidebar .nav-link {
+                color: #ffffff;
+                display: flex;
+                align-items: center;
+                padding: 10px 15px;
+            }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1049;
+        }
+
+            #overlay.active {
+                display: block;
+            }
+
+        /* Dark Mode */
+        .dark-mode {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+
+        .toggle-sidebar {
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .btn-close {
+            background-color: transparent;
+            border: none;
+            font-size: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom shadow-sm mb-3">
+            <div class="container-fluid">
+                <span class="toggle-sidebar" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </span>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Parcel Tracking</a>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home
+                                <i class="fas fa-home"></i> 
+
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Ourwork" asp-action="Index">Service</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Chat" asp-action="UserDashboard">Notification</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Chat" asp-action="UserInbox">Chat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="PayPal" asp-action="EnterAmount">Payment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Contact" asp-action="Index">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="About" asp-action="Index">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar -->
+    @if (User.IsInRole("Admin"))
+    {
+        <div id="admin-sidebar">
+            <h5>Admin Panel</h5>
+            <button class="btn-close position-absolute top-0 end-0 m-2" onclick="toggleSidebar()" aria-label="Close">×</button>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="bi bi-house"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Admin" asp-action="Dashboard">
+                        <i class="bi bi-speedometer2"></i> Admin Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Chat" asp-action="AdminInbox">
+                        <i class="bi bi-envelope"></i> Admin Inbox
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Dashboard" asp-action="Index">
+                        <i class="bi bi-box-seam"></i> Parcel Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Parcels" asp-action="Index">
+                        <i class="bi bi-truck"></i> Parcel
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="overlay" onclick="toggleSidebar()"></div>
+    }
+
+    
+
+
+
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+            <div class="header_top">
+                <div class="container-fluid ">
+                    <div class="contact_nav">
+                        <a href="">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>
+                                Call : (+234) 8138487360
+                            </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>
+                                Email : adamhammed12@gmail.com
+                            </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>
+                                Location
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="header_bottom">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg custom_nav-container ">
+                        <a class="navbar-brand" href="index.html">
+                            <span>
+                                Parcel System 
+                            </span>
+                        </a>
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class=""> </span>
+                        </button>
+
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!-- end header section -->
+        <!-- slider section -->
+        <section class="slider_section ">
+            <div class="slider_bg_box">
+                <img src="~/js/images/slider-bg.jpg" alt="">
+            </div>
+            <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="container ">
+                            <div class="row">
+                                <div class="col-md-7 ">
+                                    <div class="detail-box">
+                                        <h1>
+                                            We Provide best <br>
+                                            Transport Service
+                                        </h1>
+                                      <h1> <p>
+                                    Reliable: Consistently delivers on time and as promised.
+                                </p>
+                                <p>
+                                    Efficient: Fast and smooth delivery process.
+
+                                </p>
+                                <p>
+                                    Professional: Maintains a high standard of customer service.
+                                </p>
+                                <p>
+                                    Dependable: Always trustworthy and capable.
+
+                                </p>
+                                    <p>Responsive: Quickly addresses inquiries and concerns.</p>
+                                </h1>
+                             
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container ">
+                            <div class="row">
+                                <div class="col-md-7 ">
+                                    <div class="detail-box">
+                                        <h1>
+                                            We Provide best <br>
+                                            Transport Service
+                                        </h1>
+                                        <h1>
+                                            <p>
+                                                Reliable: Consistently delivers on time and as promised.
+                                            </p>
+                                            <p>
+                                                Efficient: Fast and smooth delivery process.
+
+                                            </p>
+                                            <p>
+                                                Professional: Maintains a high standard of customer service.
+                                            </p>
+                                            <p>
+                                                Dependable: Always trustworthy and capable.
+
+                                            </p>
+                                            <p>Responsive: Quickly addresses inquiries and concerns.</p>
+                                        </h1>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container ">
+                            <div class="row">
+                                <div class="col-md-7 ">
+                                    <div class="detail-box">
+                                        <h1>
+                                            We Provide best <br>
+                                            Transport Service
+                                        </h1>
+                                        <h1>
+                                            <p>
+                                                Reliable: Consistently delivers on time and as promised.
+                                            </p>
+                                            <p>
+                                                Efficient: Fast and smooth delivery process.
+
+                                            </p>
+                                            <p>
+                                                Professional: Maintains a high standard of customer service.
+                                            </p>
+                                            <p>
+                                                Dependable: Always trustworthy and capable.
+
+                                            </p>
+                                            <p>Responsive: Quickly addresses inquiries and concerns.</p>
+                                        </h1>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ol class="carousel-indicators">
+                    <li data-target="#customExample" data-slide-to="0" class="active"></li>
+                    <li data-target="#customCarousel1" data-slide-to="1"></li>
+                    <li data-target="#customCarousel1" data-slide-to="2"></li>
+                </ol>
+            </div>
+
+        </section>
+        <!-- end slider section -->
+    </div>
+
+
+    <!-- service section -->
+
+    <section class="service_section layout_padding">
+        <div class="service_container">
+            <div class="container ">
+                <div class="heading_container">
+                    <h2>
+                        Our <span>Services</span>
+                    </h2>
+                    <p>
+                        At Parcel System, we are committed to connecting people and businesses through seamless delivery services. With years of experience in the logistics industry, we have built a reputation for reliability, speed, and exceptional customer care. Our mission is simple: to deliver more than just parcels—we deliver trust, convenience, and peace of mind. Whether it's a single package or a bulk shipment, our innovative tracking systems, extensive delivery network, and dedicated team ensure every item reaches its destination safely and on time.
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="~/js/images/s1.png" alt="">
+
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Air Transport
+                                </h5>
+                                <p>
+                                    When time is of the essence, trust Parcel System to deliver your parcels with unmatched speed and precision through our premium Air Transport Services. Designed for urgent, long-distance deliveries, our air parcel solutions ensure your packages arrive safely and on time, no matter where they’re headed.
+                                </p>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Ourwork" asp-action="Index"> Read More</a>
+
+                               
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="~/js/images/s2.png" alt="">
+
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Cargo Transport
+                                </h5>
+                                <p>
+                                    At Parcel System, we specialize in Cargo Transport solutions that ensure your goods are delivered safely, on time, and in optimal condition. Whether you're shipping bulk materials, large machinery, or high-value goods, we provide tailored services that meet your unique transportation needs.
+                                </p>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Ourwork" asp-action="Index"> Read More</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="~/js/images/s3.png" alt="">
+
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Trucks Transport
+                                </h5>
+                                <p>
+                                    At Parcel System, our Truck Transport Services are the backbone of efficient and dependable parcel delivery. Whether it’s local or regional shipments, we ensure your packages reach their destination safely, on time, and in perfect condition.
+                                </p>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Ourwork" asp-action="Index"> Read More</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="box ">
+                            <div class="img-box">
+                                <img src="~/js/images/s4.png" alt="">
+
+                            </div>
+                            <div class="detail-box">
+                                <h5>
+                                    Train Transport
+                                </h5>
+                                <p>
+                                    At Parcel System, we offer Train Transport Services that are both efficient and environmentally friendly. Ideal for large-scale shipments over long distances, our rail solutions provide a cost-effective and reliable alternative for transporting goods across regions and countries.
+                                </p>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Ourwork" asp-action="Index"> Read More</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end service section -->
+    <!-- about section -->
+
+    <section class="about_section layout_padding-bottom">
+        <div class="container  ">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="detail-box">
+                        <div class="heading_container">
+                            <h2>
+                                About <span>Us</span>
+                            </h2>
+                        </div>
+                        <p>
+                            At Parcel System, we are more than just a logistics provider – we are your trusted partner in delivering goods across the globe. With a focus on efficiency, reliability, and sustainability, we offer a wide range of transportation services, from air and truck to rail and cargo solutions. Whether it’s a single parcel or large-scale shipments, we ensure your goods reach their destination safely and on time.
+                        </p>
+                        <a  asp-controller="About" asp-action="Index">
+                            Read More
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="img-box">
+                        <img src="~/js/images/about-img.jpg" alt="">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- end about section -->
+    <!-- track section -->
+
+    <section class="track_section layout_padding">
+        <div class="track_bg_box">
+            <img src="~/js/images/track-bg.jpg" alt="">
+
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="heading_container">
+                        <h2>
+                            Track Your Shipment
+                        </h2>
+                    </div>
+                    <p>
+                        With [Parcel System], tracking your shipment is simple, fast, and hassle-free. Our advanced tracking system ensures that you stay informed at every step of your parcel’s journey, from pickup to delivery.
+                    </p>
+                    <!-- Search Bar -->
+                    <div class="search-bar mb-4">
+                        <form>
+                            <div class="input-group">
+                                <input type="text"
+                                       name="searchTerm"
+                                       class="form-control"
+                                       placeholder="Enter Your Tracking Number....."
+                                       value="@ViewData["SearchTerm"]" />
+                                <button type="submit" class="btn btn-primary">
+                                    Track
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    @if (Model != null)
+                    {
+                        <div class="parcel-details mt-4">
+                            <h3>Parcel Details</h3>
+                            <ul>
+                                <li><strong>Tracking Number:</strong> @Model.TrackingNumber</li>
+                                <li><strong>Status:</strong> @Model.Status</li>
+                                <li><strong>Shipped Date:</strong> @Model.CreatedAt</li>
+                                <li><strong>CreatedBy:</strong> @Model.CreatedBy</li>
+                                <li><strong>Recipient Name:</strong> @Model.RecipientName</li>
+                                <li><strong>Shipping Method:</strong> @Model.ShippingMethod</li>
+                                <li><strong>Delivered At:</strong> @Model.DeliveredAt</li>
+                            
+                            </ul>
+                        </div>
+                    }
+                    else if (ViewData["Message"] != null)
+                    {
+                        <div class="alert alert-warning mt-4">
+                            @ViewData["Message"]
+                        </div>
+                    }
+
+
+                      
+                      
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end track section -->
+    <!-- client section -->
+
+    <section class="client_section layout_padding">
+        <div class="container">
+            <div class="heading_container">
+                <h2>
+                    What Says Our <span>Client</span>
+                </h2>
+            </div>
+            <div class="client_container">
+                <div class="carousel-wrap ">
+                    <div class="owl-carousel">
+                        <div class="item">
+                            <div class="box">
+                                <div class="detail-box">
+                                    <p>
+                                        Personalized Solutions:Every business has different logistics requirements. That’s why they provide customized services that fit our needs perfectly.
+                                    </p>
+                                </div>
+                                <div class="client_id">
+                                    <div class="img-box">
+                                        <img src="~/js/images/client-1.png" alt="" class="img-1">
+
+                                    </div>
+                                    <div class="name">
+                                        <h6>
+                                           Mr Hammed Adam
+                                        </h6>
+                                        <p>
+                                            Ayomide
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="box">
+                                <div class="detail-box">
+                                    <p>
+                                        On-Time Delivery: Clients rely on us for timely and accurate deliveries, every time.
+                                    </p>
+                                </div>
+                                <div class="client_id">
+                                    <div class="img-box">
+                                        <img src="~/js/images/client-2.png" alt="" class="img-1">
+
+                                    </div>
+                                    <div class="name">
+                                        <h6>
+                                            Mr Hammed Adam
+                                        </h6>
+                                        <p>
+                                            Ayo
+                                          </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="box">
+                                <div class="detail-box">
+                                    <p>
+                                        Customer-Centric Approach: They focus on creating positive, lasting relationships by providing responsive support and keeping communication clear and open.
+                                    </p>
+                                </div>
+                                <div class="client_id">
+                                    <div class="img-box">
+                                        <img src="~/js/images/client-1.png" alt="" class="img-1">
+
+                                    </div>
+                                    <div class="name">
+                                        <h6>
+                                            Mr Timothy
+                                        </h6>
+                                        <p>
+                                            Ky
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="box">
+                                <div class="detail-box">
+                                    <p>
+                                        Efficiency & Reliability: From small parcels to bulk cargo, they deliver with precision and care, ensuring that your shipments are handled efficiently from start to finish.
+                                    </p>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end client section -->
+    <!-- contact section -->
+    < <!-- Contact Start -->
+    <div class="container pt-5">
+        <div class="d-flex flex-column text-center mb-5">
+            <h4 class="text-primary font-weight-bold">Get In Touch</h4>
+            <h4 class="display-4 font-weight-bold">Email Us For Any Query</h4>
+        </div>
+        <div class="row px-3 pb-2">
+            <div class="col-sm-4 text-center mb-3">
+                <i class="fa fa-2x fa-map-marker-alt mb-3 text-primary"></i>
+                <h4 class="font-weight-bold">Address</h4>
+                <p>Ibadan, Nigeria, Oyo State</p>
+            </div>
+            <div class="col-sm-4 text-center mb-3">
+                <i class="fa fa-2x fa-phone-alt mb-3 text-primary"></i>
+                <h4 class="font-weight-bold">Phone</h4>
+                <p>+234 384 87360 </p>
+            </div>
+            <div class="col-sm-4 text-center mb-3">
+                <i class="far fa-2x fa-envelope mb-3 text-primary"></i>
+                <h4 class="font-weight-bold">Email</h4>
+                <p>adamhammed12@gmail.com</p>
+            </div>
+        </div>
+        <div class="row">
+                                                                                                                                                                                                                                                                                            
+            <div class="col-md-6 pb-5">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d148224.13584378996!2d3.8598929464296647!3d7.367178584632691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10398d77eeff086f%3A0x3b33e0f76e8e04a9!2sIbadan%2C%20Oyo!5e0!3m2!1sen!2sng!4v1738655527213!5m2!1sen!2sng" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="col-md-6 pb-5">
+                <div class="contact-form">
+                    <div id="success"></div>
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="8dd81a00-fb18-456f-bb9b-4732020348fa">
+                        <input type="hidden" name="from_name" value="Parcel System">
+                        <div class="control-group">
+                            <label for="FullName">FullName</label>
+                            <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Your Name" required="required" data-validation-required-message="Please enter your fullname" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email" name="email" required="required" data-validation-required-message="Please enter your email" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <label for="Subject">Subject</label>
+                            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <label for="message">Message</label>
+
+                        <div class="control-group">
+                            <textarea class="form-control" rows="6" id="message" name="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                            <p class="help-block text-danger"></p>
+
+
+
+                            <button type="submit">Send Message</button>
+                        </div>
+
+                    </form>
+                    <!-- Required only if you are using hCaptcha or Advanced File Upload. -->
+                    <script src="https://web3forms.com/client/script.js" async defer></script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end contact section -->
+    <!-- info section -->
+
+    <section class="info_section layout_padding2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 info_col">
+                    <div class="info_contact">
+                        <h4>
+                            Address
+                        </h4>
+                        <div class="contact_link_box">
+                            <a href="">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <span>
+                                    Location
+                                </span>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <span>
+                                    Call +234 8138487360
+                                </span>
+                            </a>
+                            <a href="mailto:adamhammed12@gmail.com">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <span>
+                                    adamhammed12@gmail.com
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="info_social">
+                        <a href="">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                        <a href="">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 info_col">
+                    <div class="info_detail">
+                        <h4>
+                            Info
+                        </h4>
+                        <p>
+                            We proudly serve clients across a variety of industries, including:
+
+                            E-commerce: Helping online businesses ship products quickly and affordably.
+                            Manufacturing: Ensuring raw materials and finished goods are delivered on time and in optimal condition.
+                        
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2 mx-auto info_col">
+                    <div class="info_link_box">
+                        <h4>
+                            Links
+                        </h4>
+                        <div class="info_links">
+                            <a class="" asp-controller="Home" asp-action="Index">
+                                <img src="~/js/images/nav-bullet.png" alt="">
+
+                                Home
+                            </a>
+                            <a class="" asp-controller="About" asp-action="Index">
+                                <img src="~/js/images/nav-bullet.png" alt="">
+
+                                About
+                            </a>
+                            <a class="" asp-controller="Ourwork" asp-action="Index"> 
+
+                                <img src="~/js/images/nav-bullet.png" alt="">
+                                Services
+                            </a>
+                            <a class="" asp-controller="Contact" asp-action="Index">
+                                <img src="~/js/images/nav-bullet.png" alt="">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 info_col ">
+                    <h4>
+                        Subscribe
+                    </h4>
+                    <form action="#">
+                        <input type="text" placeholder="Enter email" />
+                        <button type="submit">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end info section -->
+    <!-- footer section -->
+    <section class="footer_section">
+        <div class="container">
+            <p>
+                &copy; <span id="displayYear"></span> All Rights Reserved By
+                <a href="">Adam</a>
+            </p>
+        </div>
+    </section>
+  
+
+</body>
+
+</html>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById("admin-sidebar");
+        const overlay = document.getElementById("overlay");
+        sidebar.classList.toggle("active");
+        overlay.classList.toggle("active");
+    }
+
+    document.getElementById("displayYear").textContent = new Date().getFullYear();
+    // Trigger the carousel to slide manually
+    document.querySelectorAll('.carousel-indicators li').forEach((indicator, index) => {
+        indicator.addEventListener('click', function () {
+            $('#carouselExample').carousel(index);
+        });
+    });
+
+    // Manually trigger previous and next buttons
+    document.querySelector('.carousel-control-prev').addEventListener('click', function () {
+        $('#carouselExample').carousel('prev');
+    });
+
+    document.querySelector('.carousel-control-next').addEventListener('click', function () {
+        $('#carouselExample').carousel('next');
+    });
+</script>

@@ -1,0 +1,586 @@
+﻿@{
+
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- SEO Meta -->
+    <meta name="keywords" content="Parcel Tracking, Logistics, Delivery Service" />
+    <meta name="description" content="Efficient and reliable parcel tracking and delivery services." />
+    <meta name="author" content="Adam" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/images/fevicon.png" type="image/png" />
+
+    <title>Service - Parcel Tracking System</title>
+
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <!-- Additional Styles -->
+    <link rel="stylesheet" href="~/css/bootstrap.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        /* Full-page background color */
+        body {
+            background-color: papayawhip;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar container styling */
+        #admin-sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100vh;
+            background-color: #212529; /* Dark gray for sidebar */
+            color: #ffffff; /* White text for contrast */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            z-index: 1050;
+        }
+
+            #admin-sidebar.active {
+                left: 0;
+            }
+
+            #admin-sidebar h5 {
+                padding: 15px;
+                margin: 0;
+                background-color: #007bff;
+                color: white;
+                text-align: center;
+            }
+
+            #admin-sidebar .nav-link {
+                font-size: 16px;
+                padding: 10px 15px;
+                color: #ffffff;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                transition: color 0.2s ease, background-color 0.2s ease;
+            }
+
+                #admin-sidebar .nav-link:hover {
+                    background-color: #007bff;
+                    border-left: 4px solid #ffffff;
+                    color: #ffffff;
+                    border-radius: 4px;
+                }
+
+        /* Overlay to dim the content when sidebar is active */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1049;
+            transition: opacity 0.3s ease;
+        }
+
+            #overlay.active {
+                display: block;
+                opacity: 1;
+            }
+
+        /* Main content background */
+        main {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark mode */
+        .dark-mode {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        /* Navbar hover effect */
+        .nav-link:hover {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .toggle-sidebar {
+            cursor: pointer;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .btn-close {
+            background-color: transparent;
+            border: none;
+            font-size: 16px;
+        }
+
+        .carousel-inner img {
+            max-height: 500px; /* Limit image height */
+            object-fit: cover; /* Ensures images fit the container proportionally */
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5); /* Add background for better visibility */
+            border-radius: 50%;
+        }
+
+        .carousel-indicators li {
+            background-color: #007bff; /* Blue indicators */
+        }
+
+        .carousel-indicators .active {
+            background-color: #0056b3; /* Darker blue for the active indicator */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom shadow-sm mb-3">
+            <div class="container-fluid">
+                <span class="toggle-sidebar" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </span>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">Parcel Tracking</a>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home
+                                <i class="bi bi-house"></i>
+
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Ourwork" asp-action="Index">Service</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Chat" asp-action="UserDashboard">Notification</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Chat" asp-action="UserInbox">Chat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="PayPal" asp-action="EnterAmount">Payment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Contact" asp-action="Index">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="About" asp-action="Index">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar -->
+    @if (User.IsInRole("Admin"))
+    {
+        <div id="admin-sidebar">
+            <h5>Admin Panel</h5>
+            <button class="btn-close position-absolute top-0 end-0 m-2" onclick="toggleSidebar()" aria-label="Close">×</button>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="bi bi-house"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Admin" asp-action="Dashboard">
+                        <i class="bi bi-speedometer2"></i> Admin Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Chat" asp-action="AdminInbox">
+                        <i class="bi bi-envelope"></i> Admin Inbox
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Dashboard" asp-action="Index">
+                        <i class="bi bi-box-seam"></i> Parcel Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Parcels" asp-action="Index">
+                        <i class="bi bi-truck"></i> Parcel
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="overlay" onclick="toggleSidebar()"></div>
+    }
+
+    <div class="hero_area">
+        <!-- header section strats -->
+        <header class="header_section">
+            <div class="header_top">
+                <div class="container-fluid ">
+                    <div class="contact_nav">
+                        <a href="">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>
+                                Call : (+234) 8138487360
+                            </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>
+                                Email : adamhammed12@gmail.com
+                            </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>
+                                Location
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="header_bottom">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg custom_nav-container ">
+                        <a class="navbar-brand" href="index.html">
+                            <span>
+                                Parcel System
+                            </span>
+                        </a>
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class=""> </span>
+                        </button>
+
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- service section -->
+
+        <section class="service_section layout_padding">
+            <div class="service_container">
+                <div class="container ">
+                    <div class="heading_container">
+                        <h2>
+                            Our <span>Services</span>
+                        </h2>
+                        <p>
+
+                       
+
+                            At Parcel System, we are committed to connecting people and businesses through seamless delivery services. With years of experience in the logistics industry, we have built a reputation for reliability, speed, and exceptional customer care.
+
+                            Our mission is simple: to deliver more than just parcels—we deliver trust, convenience, and peace of mind. Whether it's a single package or a bulk shipment, our innovative tracking systems, extensive delivery network, and dedicated team ensure every item reaches its destination safely and on time.
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 ">
+                            <div class="box ">
+                                <div class="img-box">
+                                    <img src="~/js/images/s1.png" alt="">
+
+                                </div>
+                                <div class="detail-box">
+                                    <h2>
+                                        Air Transport
+                                    </h2>
+                                    <p>
+                                        When time is of the essence, trust [Parcel System] to deliver your parcels with unmatched speed and precision through our premium Air Transport Services. Designed for urgent, long-distance deliveries, our air parcel solutions ensure your packages arrive safely and on time, no matter where they’re headed.
+                                    </p>
+                                    <h4>
+                                        Why Choose Air Transport for Your Parcels?
+                                    </h4>
+                                    <p>Speed and Efficiency: Air transport is the fastest way to deliver your parcels across cities, countries, or continents.</p>
+                                    <p>Global Reach: Seamless delivery to remote and international destinations.</p>
+                                    <p>Safety Assurance: Advanced handling processes to protect fragile and high-value items during transit.</p>
+                                    <p>Time-Sensitive Deliveries: Ideal for urgent shipments like documents, medical supplies, or perishable goods.</p>
+                                    <h4> Our Air Transport Features<br /></h4>
+                                    <p>Priority Shipping: Your parcels receive top priority at every stage.</p>
+                                    <p>Real-Time Tracking: Follow your parcel’s journey with detailed updates from departure to arrival.</p>
+                                    <p>Customs Expertise: Hassle-free clearance for international shipments.</p>
+                                    <p>24/7 Support: Dedicated customer care to assist you anytime.</p>
+                                    <p></p>
+                                    <p></p>
+                                    <p>Whether you're a business needing expedited logistics or an individual sending a special package, our air transport service is tailored to meet your needs.</p>
+
+                                    <h4>
+                                        
+                                            Choose Speed. Choose Reliability. Choose Parcel System</h4>
+                                        <p>
+                                            Contact us today to learn more or book your air parcel delivery!
+                                        </p>
+                                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="box ">
+                                <div class="img-box">
+                                    <img src="~/js/images/s2.png" alt="">
+
+                                </div>
+                                <div class="detail-box">
+                                    <h2>
+                                        Cargo Transport
+                                    </h2>
+                                    <p>
+                                        At Parcel System, we specialize in Cargo Transport solutions that ensure your goods are delivered safely, on time, and in optimal condition. Whether you're shipping bulk materials, large machinery, or high-value goods, we provide tailored services that meet your unique transportation needs.
+                                    </p>
+                                    <h4>
+                                        Why Choose Our Cargo Transport Services?                                        <br />
+                                    </h4>
+                                    <p>Comprehensive Coverage: Domestic and international shipping options to get your cargo where it needs to go.</p>
+                                    <p>Customizable Solutions: Flexible options to accommodate all types of cargo, including oversized or sensitive items.</p>
+                                    <p>Reliable Transit Times: Consistent and dependable schedules to meet your delivery deadlines.</p>
+                                    <p>Safety and Security: High-quality packaging and secure handling to protect your valuable goods throughout their journey.</p>
+                                    <h4> Our Cargo Transport Features<br /></h4>
+                                    <p>Specialized Equipment: From flatbeds to refrigerated trucks, we have the right tools for the job.</p>
+                                    <p>Expert Logistics: Skilled drivers and seasoned logistics coordinators ensure your cargo moves efficiently.</p>
+                                    <p>Track and Trace: Real-time tracking to monitor the progress of your shipment at all times.</p>
+                                    <p>Global Network: Leverage our international partnerships for seamless cross-border shipping.</p>
+                                    <p>Door-to-Door Delivery: Pickups and deliveries at your convenience, wherever you are.</p>
+                                    <h4>
+                                        Industries We Serve
+                                        <br />
+                                    </h4>
+                                    <p>Our cargo transport services cater to various industries, including,
+                                        Manufacturing: Moving raw materials and finished products.
+                                    </p>
+        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="box ">
+                                <div class="img-box">
+                                    <img src="~/js/images/s3.png" alt="">
+
+                                </div>
+                                <div class="detail-box">
+                                    <h2>
+                                        Trucks Transport
+                                    </h2>
+                                    <p>
+                                        At Parcel System, our Truck Transport Services are the backbone of efficient and dependable parcel delivery. Whether it’s local or regional shipments, we ensure your packages reach their destination safely, on time, and in perfect condition.
+                                    </p><h4>
+                                        Why Choose Trucks Transport?
+                                        <br />
+                                    </h4>
+                                    <p>Cost-Effective: Affordable and reliable for both small and bulk shipments.</p>
+                                    <p>Flexible Routes: Extensive road network for easy access to urban and rural destinations.</p>
+                                    <p>Versatile Loads: Ideal for all types of parcels, from small packages to large freight.</p>
+                                    <p>Eco-Friendly Options: Leveraging fuel-efficient vehicles to reduce environmental impact.</p>
+                                    <h4>What We Offer <br /></h4>
+                                    <p>Timely Deliveries: Precision scheduling and real-time updates keep you informed every step of the way.</p>
+                                    <p>Secure Handling: Specialized equipment and trained drivers to protect your parcels.</p>
+                                    <p>Express and Standard Options: Choose the delivery speed that fits your timeline.</p>
+                                    <p>Door-to-Door Service: Hassle-free pickups and drop-offs at your preferred location.</p>
+                                    <p>Dedicated Fleet: Modern trucks equipped to handle all types of goods, including temperature-controlled cargo.</p>
+                                    <h4>Tailored for Businesses and Individuals<br /></h4>
+                                    <p>
+                                        Whether you’re a business managing regular shipments or an individual sending a single package, our truck transport service offers a reliable and scalable solution to meet your needs.
+
+                                        Driven to Deliver Excellence – Partner with Parcel System for all your road transport needs.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="box ">
+                                <div class="img-box">
+                                    <img src="~/js/images/s4.png" alt="">
+
+                                </div>
+                                <div class="detail-box">
+                                    <h2>
+                                        Train Transport
+                                    </h2>
+                                    <p>
+                                        At Parcel System, we offer Train Transport Services that are both efficient and environmentally friendly. Ideal for large-scale shipments over long distances, our rail solutions provide a cost-effective and reliable alternative for transporting goods across regions and countries.
+                                    </p><h4>
+                                    Why Choose Train Transport?
+                                        <br />
+                                    </h4>
+                                    <p>Cost-Effective: Rail transport offers competitive pricing for heavy and bulk shipments, reducing overall logistics costs.</p>
+                                    <p>Environmentally Friendly: Trains produce lower emissions compared to trucks, making rail transport a more sustainable choice.</p>
+                                    <p>Reliable and Timely: Our rail network operates on fixed schedules, ensuring your cargo arrives on time, every time.</p>
+                                    <p>High Capacity: Trains can carry large volumes of goods, making it ideal for businesses that need to ship bulk orders efficiently.</p>
+                                    <h4>What We Offer <br /></h4>
+                                    <p>Intermodal Services: Combine rail with truck or air transport for seamless door-to-door delivery.</p>
+                                    <p>Safe and Secure: Cargo is handled with care, and our team ensures it’s safely loaded and unloaded for each leg of the journey.</p>
+                                    <p>Long-Distance Reach: Rail networks cover vast regions, offering a reliable option for cross-country and international shipments.</p>
+                                    <p>Real-Time Tracking: Stay informed with live updates about your cargo’s location and estimated delivery time.</p>
+                                    <h4>Industries We Serve
+                                        <br />
+                                    </h4>
+                                    <p>Our train transport services are designed to serve a variety of industries, including
+                                    Manufacturing: For moving large volumes of raw materials and finished products.</p>
+                               
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- end service section -->
+        <!-- info section -->
+
+        <section class="info_section layout_padding2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 info_col">
+                        <div class="info_contact">
+                            <h4>
+                                Address
+                            </h4>
+                            <div class="contact_link_box">
+                                <a href="">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <span>
+                                        Location
+                                    </span>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <span>
+                                        Call +234 8138487360
+                                    </span>
+                                </a>
+                                <a href="mailto:adamhammed12@gmail.com">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <span>
+                                        adamhammed12@gmail.com
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="info_social">
+                            <a href="">
+                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fab fa-twitter" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+
+                                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 info_col">
+                        <div class="info_detail">
+                            <h4>
+                                Info
+                            </h4>
+                            <p>
+                                We proudly serve clients across a variety of industries, including:
+
+                                E-commerce: Helping online businesses ship products quickly and affordably.
+                                Manufacturing: Ensuring raw materials and finished goods are delivered on time and in optimal condition.
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2 mx-auto info_col">
+                        <div class="info_link_box">
+                            <h4>
+                                Links
+                            </h4>
+                            <div class="info_links">
+                                <a class="" asp-controller="Home" asp-action="Index">
+                                    <img src="~/js/images/nav-bullet.png" alt="">
+
+                                    Home
+                                </a>
+                                <a class="" asp-controller="About" asp-action="Index">
+                                    <img src="~/js/images/nav-bullet.png" alt="">
+
+                                    About
+                                </a>
+                                <a class="" asp-controller="Ourwork" asp-action="Index">
+
+                                    <img src="~/js/images/nav-bullet.png" alt="">
+                                    Services
+                                </a>
+                                <a class="" asp-controller="Contact" asp-action="Index">
+                                    <img src="~/js/images/nav-bullet.png" alt="">
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 info_col ">
+                        <h4>
+                            Subscribe
+                        </h4>
+                        <form action="#">
+                            <input type="text" placeholder="Enter email" />
+                            <button type="submit">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- end info section -->
+        <!-- footer section -->
+        <section class="footer_section">
+            <div class="container">
+                <p>
+                    &copy; <span id="displayYear"></span> All Rights Reserved By
+                    <a href="">Adam</a>
+                </p>
+            </div>
+        </section>
+        <script>
+            function toggleSidebar() {
+                const sidebar = document.getElementById("admin-sidebar");
+                const overlay = document.getElementById("overlay");
+                sidebar.classList.toggle("active");
+                overlay.classList.toggle("active");
+            }
+
+            document.getElementById("displayYear").textContent = new Date().getFullYear();
+        </script>
+
+</body>
+
+</html>

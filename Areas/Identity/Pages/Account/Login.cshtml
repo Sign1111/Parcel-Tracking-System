@@ -1,0 +1,73 @@
+﻿@page
+@model Parcel_Tracking.Areas.Identity.Pages.Account.LoginModel
+
+@{
+    ViewData["Title"] = "";
+}
+
+<div class="container py-5">
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+    <style>
+        body {
+            background: url('https://media.philstar.com/images/bites/plane2018-03-1715-53-02_2020-01-27_18-16-09.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .card {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+
+        .profile-image {
+            max-width: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    </style>
+
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
+            <h1 class="text-center mb-4">@ViewData["Title"]</h1>
+            <form id="account" method="post">
+                <h2 class="h5 text-center mb-4"> Enter Your Login Details</h2>
+                <hr />
+
+                <!-- Display Profile Image if Available -->
+                @if (!string.IsNullOrEmpty(Model.ImagePath))
+                {
+                    <div class="text-center mt-3">
+                        <img src="@Model.ImagePath" alt="Profile Image" class="profile-image" />
+                    </div>
+                }
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email" class="form-label">Email</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" type="password" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password" class="form-label">Password</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" asp-for="Input.RememberMe" />
+                    <label asp-for="Input.RememberMe" class="form-check-label">Remember me</label>
+                </div>
+                <button id="login-submit" type="submit" class="w-100 btn btn-primary btn-lg">Log in</button>
+                <div class="mt-4 text-center">
+                    <p><a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a></p>
+                    <p><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a></p>
+                    <p><a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Parcel Tracking</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* Full-page background color */
+        body {
+            background-color: papayawhip;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar container styling */
+        #admin-sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100vh;
+            background-color: #212529; /* Dark gray for sidebar */
+            color: #ffffff; /* White text for contrast */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease;
+            z-index: 1050;
+        }
+
+            #admin-sidebar.active {
+                left: 0;
+            }
+
+            #admin-sidebar h5 {
+                padding: 15px;
+                margin: 0;
+                background-color: #007bff;
+                color: white;
+                text-align: center;
+            }
+
+            #admin-sidebar .nav-link {
+                font-size: 16px;
+                padding: 10px 15px;
+                color: #ffffff;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                transition: color 0.2s ease, background-color 0.2s ease;
+            }
+
+                #admin-sidebar .nav-link:hover {
+                    background-color: #007bff;
+                    border-left: 4px solid #ffffff;
+                    color: #ffffff;
+                    border-radius: 4px;
+                }
+
+        /* Overlay to dim the content when sidebar is active */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1049;
+            transition: opacity 0.3s ease;
+        }
+
+            #overlay.active {
+                display: block;
+                opacity: 1;
+            }
+
+        /* Main content background */
+        main {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark mode */
+        .dark-mode {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        /* Navbar hover effect */
+        .nav-link:hover {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .toggle-sidebar {
+            cursor: pointer;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .btn-close {
+            background-color: transparent;
+            border: none;
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <span class="toggle-sidebar" onclick="toggleSidebar()">
+                    <i class="bi bi-list"></i>
+                </span>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Parcel Tracking</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home
+                                <i class="bi bi-house"></i> 
+
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Ourwork" asp-action="Index">Service</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Chat" asp-action="UserDashboard">Notification</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Chat" asp-action="UserInbox">Chat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="PayPal" asp-action="EnterAmount">Payment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="About" asp-action="Index">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar -->
+    @if (User.IsInRole("Admin"))
+    {
+        <div id="admin-sidebar">
+            <h5>Admin Panel</h5>
+            <button class="btn-close position-absolute top-0 end-0 m-2" onclick="toggleSidebar()" aria-label="Close">X</button>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="bi bi-house"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Admin" asp-action="Dashboard">
+                        <i class="bi bi-speedometer2"></i> Admin Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Chat" asp-action="AdminInbox">
+                        <i class="bi bi-envelope"></i> Admin Inbox
+                    </a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Dashboard" asp-action="Index">
+                        <i class="bi bi-box-seam"></i> Parcel Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Parcels" asp-action="Index">
+                        <i class="bi bi-truck"></i> Parcel
+                    </a>
+                </li>
+            </ul>
+        </div>
+    }
+
+    <!-- Overlay -->
+    <div id="overlay" onclick="toggleSidebar()"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-md-12">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("admin-sidebar");
+            const overlay = document.getElementById("overlay");
+
+            sidebar.classList.toggle("active");
+            overlay.classList.toggle("active");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,601 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\obj\\Release\\net7.0\\scopedcss\\projectbundle\\Parcel Tracking.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Parcel Tracking.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\css\\responsive.css",
+      "PackagePath": "staticwebassets\\css\\responsive.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\css\\style.scss",
+      "PackagePath": "staticwebassets\\css\\style.scss"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\images\\20241129_184316.jpg",
+      "PackagePath": "staticwebassets\\images\\20241129_184316.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\images\\FB_IMG_17261779775758943.jpg",
+      "PackagePath": "staticwebassets\\images\\FB_IMG_17261779775758943.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\images\\IMG-20250206-WA0022.jpg",
+      "PackagePath": "staticwebassets\\images\\IMG-20250206-WA0022.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\images\\image11.jpg",
+      "PackagePath": "staticwebassets\\images\\image11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\custom.js",
+      "PackagePath": "staticwebassets\\js\\custom.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\images\\about-img.jpg",
+      "PackagePath": "staticwebassets\\js\\images\\about-img.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\images\\client-1.png",
+      "PackagePath": "staticwebassets\\js\\images\\client-1.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\images\\client-2.png",
+      "PackagePath": "staticwebassets\\js\\images\\client-2.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\images\\fevicon.png",
+      "PackagePath": "staticwebassets\\js\\images\\fevicon.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\images\\next.png",
+      "PackagePath": "staticwebassets\\js\\images\\next.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\images\\prev.png",
+      "PackagePath": "staticwebassets\\js\\images\\prev.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\images\\s1.png",
+      "PackagePath": "staticwebassets\\js\\images\\s1.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\images\\s2.png",
+      "PackagePath": "staticwebassets\\js\\images\\s2.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\images\\s3.png",
+      "PackagePath": "staticwebassets\\js\\images\\s3.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\images\\s4.png",
+      "PackagePath": "staticwebassets\\js\\images\\s4.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\images\\slider-bg.jpg",
+      "PackagePath": "staticwebassets\\js\\images\\slider-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\images\\track-bg.jpg",
+      "PackagePath": "staticwebassets\\js\\images\\track-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\index.js",
+      "PackagePath": "staticwebassets\\js\\index.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\jquery-3.4.1.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery-3.4.1.min.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\images\\about-img.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\images\\about-img.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\images\\client-1.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\images\\client-1.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\images\\client-2.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\images\\client-2.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\images\\fevicon.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\images\\fevicon.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\images\\next.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\images\\next.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\images\\prev.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\images\\prev.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\images\\s1.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\images\\s1.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\images\\s2.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\images\\s2.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\images\\s3.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\images\\s3.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\images\\s4.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\images\\s4.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\images\\slider-bg.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\images\\slider-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\images\\track-bg.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\images\\track-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\a-truck.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\a-truck.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\blue-bg.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\blue-bg.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\circle-bg.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\circle-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\client.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\client.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\client1-bg.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\client1-bg.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\client2-bg.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\client2-bg.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\company.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\company.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\fb.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\fb.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\g-plus.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\g-plus.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\gift.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\gift.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\hbg-2.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\hbg-2.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\hbg-3.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\hbg-3.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\hbg.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\hbg.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\header-bg.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\header-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\info-bg.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\info-bg.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\linkedin.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\linkedin.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\logo-white.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\logo-white.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\logo.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\mail.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\mail.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\main-bg.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\main-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\menu.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\menu.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\menu.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\menu.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\next.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\next.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\phone.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\phone.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\prev.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\prev.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\search-icon.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\search-icon.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\service-1.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\service-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\service-2.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\service-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\service-3.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\service-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\slidrer-bg.jpg",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\slidrer-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\truck.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\truck.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\twitter.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\twitter.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\bootstrap\\images\\white-next.png",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\images\\white-next.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\images\\about-img.jpg",
+      "PackagePath": "staticwebassets\\lib\\images\\about-img.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\images\\client-1.png",
+      "PackagePath": "staticwebassets\\lib\\images\\client-1.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\images\\client-2.png",
+      "PackagePath": "staticwebassets\\lib\\images\\client-2.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\images\\fevicon.png",
+      "PackagePath": "staticwebassets\\lib\\images\\fevicon.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\images\\next.png",
+      "PackagePath": "staticwebassets\\lib\\images\\next.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\images\\prev.png",
+      "PackagePath": "staticwebassets\\lib\\images\\prev.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\images\\s1.png",
+      "PackagePath": "staticwebassets\\lib\\images\\s1.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\images\\s2.png",
+      "PackagePath": "staticwebassets\\lib\\images\\s2.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\images\\s3.png",
+      "PackagePath": "staticwebassets\\lib\\images\\s3.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\images\\s4.png",
+      "PackagePath": "staticwebassets\\lib\\images\\s4.png"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\images\\slider-bg.jpg",
+      "PackagePath": "staticwebassets\\lib\\images\\slider-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\images\\track-bg.jpg",
+      "PackagePath": "staticwebassets\\lib\\images\\track-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\uploads\\20241129_184316.jpg",
+      "PackagePath": "staticwebassets\\uploads\\20241129_184316.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IITA-MISTRNG\\source\\repos\\Parcel Tracking\\Parcel Tracking\\wwwroot\\uploads\\image11.jpg",
+      "PackagePath": "staticwebassets\\uploads\\image11.jpg"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.Parcel Tracking.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.build.Parcel Tracking.props",
+      "PackagePath": "build\\Parcel Tracking.props"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.Parcel Tracking.props",
+      "PackagePath": "buildMultiTargeting\\Parcel Tracking.props"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.buildTransitive.Parcel Tracking.props",
+      "PackagePath": "buildTransitive\\Parcel Tracking.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

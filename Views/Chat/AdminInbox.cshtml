@@ -1,0 +1,24 @@
+﻿@model List<string> //<!-- List of User IDs or Usernames -->
+
+<div class="container mt-5">
+    <h2>Admin Inbox</h2>
+    <ul class="list-group">
+        @foreach (var user in Model)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>Chat with @user</span>
+                <div>
+                    <a href="@Url.Action("SendMessage", "Chat", new { userId = user })" class="btn btn-primary btn-sm">Chat</a>
+                    <a href="@Url.Action("SendTrackingNumber", "Chat", new { userId = user })" class="btn btn-success btn-sm">Send Tracking Number</a>
+                </div>
+            </li>
+        }
+    </ul>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+</div>

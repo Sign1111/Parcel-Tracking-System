@@ -1,0 +1,183 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+
+<style>
+    /* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Card styles for Profile Section */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Image */
+.card-body img {
+    border-radius: 50%;
+    max-width: 150px;
+    object-fit: cover;
+    border: 3px solid #f0f0f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styles */
+.form-floating {
+    margin-bottom: 1.5rem;
+}
+
+.form-floating label {
+    color: #6c757d;
+    font-weight: 600;
+}
+
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 1rem;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.form-control:disabled {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+/* Button Style */
+button {
+    font-size: 1rem;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Status Message */
+.alert {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Profile Section Alignment */
+.profile-info {
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Spacing for Cards and Form */
+.card-body, .form-container {
+    padding: 2rem;
+}
+
+/* Responsive Design */
+@@media (max-width: 767px) {
+    .row {
+        display: block;
+    }
+
+    .col-md-6 {
+        margin-bottom: 2rem;
+    }
+
+    .form-container {
+        padding: 1.5rem;
+    }
+
+    .card-body img {
+        max-width: 120px;
+    }
+
+    .card-body h4 {
+        font-size: 1.5rem;
+    }
+}
+
+</style>
+
+
+<div class="container py-4">
+    <h3>@ViewData["Title"]</h3>
+    <hr />
+    <partial name="_StatusMessage" for="StatusMessage" />
+
+    <div class="row justify-content-center">
+        <!-- Profile Information Section -->
+        <div class="col-md-6">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body profile-info">
+                    <!-- Profile Image -->
+                    @if (!string.IsNullOrEmpty(Model.ImagePath))
+                    {
+                        <img src="@Model.ImagePath" alt="Profile Image" class="img-fluid rounded-circle" style="max-width: 150px; object-fit: cover;" />
+                    }
+                    else
+                    {
+                        <img src="https://via.placeholder.com/150" alt="Default Profile Image" class="img-fluid rounded-circle" />
+                    }
+
+                    <!-- Username and Phone Number -->
+                    <h4 class="card-title mt-3">@Model.Username</h4>
+                    <p class="card-text text-muted">@Model.PhoneNumber</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Profile Form Section -->
+        <div class="col-md-6">
+            <form id="profile-form" method="post" enctype="multipart/form-data" class="shadow-sm p-4 bg-white rounded form-container">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+
+                <!-- Username Field -->
+                <div class="form-floating mb-3">
+                    <input asp-for="Username" class="form-control" placeholder="Enter your username." value="@Model.Username" />
+                    <label asp-for="Username" class="form-label">Username</label>
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+
+                <!-- Phone Number Field -->
+                <div class="form-floating mb-3">
+                    <input asp-for="PhoneNumber" class="form-control" placeholder="Please enter your phone number." value="@Model.PhoneNumber" />
+                    <label asp-for="PhoneNumber" class="form-label">Phone Number</label>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <!-- Image Upload Field -->
+                <div class="form-group mb-3">
+                    <label for="ProfileImage" class="form-label">Upload Profile Image</label>
+                    <input type="file" asp-for="ProfileImage" id="ProfileImage" class="form-control" />
+                    <span asp-validation-for="ProfileImage" class="text-danger"></span>
+                </div>
+
+                <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+            </form>
+
+            <!-- Status message -->
+            @if (!string.IsNullOrEmpty(Model.StatusMessage))
+            {
+                <div class="alert alert-success mt-3">@Model.StatusMessage</div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Enter Payment Amount";
+}
+
+<div style="background-color: #fff4e6; padding: 20px; text-align: center; border-radius: 10px;">
+    <h1>Enter Payment Amount</h1>
+    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal Logo" style="width: 100px; margin: 20px auto;">
+    <form asp-controller="PayPal" asp-action="CreatePayment" method="post" style="max-width: 400px; margin: 0 auto;">
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="amount" style="font-weight: bold;">Amount (USD):</label>
+            <input type="number" step="0.01" id="amount" name="amount" class="form-control" placeholder="Enter amount" required style="margin-top: 5px;">
+        </div>
+        <button type="submit" class="btn btn-primary" style="background-color: #0070ba; border-color: #0070ba;">
+            Pay with PayPal
+        </button>
+    </form>
+    <p style="margin: 20px 0; font-weight: bold;">OR</p>
+    <form asp-controller="Card" asp-action="ProcessPayment" method="post" style="max-width: 400px; margin: 0 auto;">
+        <input type="hidden" name="amount" value="" id="hiddenAmount">
+        <button type="submit" class="btn btn-secondary" style="background-color: #4CAF50; border-color: #4CAF50;">
+            Pay with Card
+        </button>
+    </form>
+</div>
+
+<script>
+    // Copy the entered amount to the card form when submitted
+    const paypalForm = document.querySelector('form[asp-action="CreatePayment"]');
+    const cardForm = document.querySelector('form[asp-action="ProcessPayment"]');
+    const amountInput = document.getElementById('amount');
+    const hiddenAmount = document.getElementById('hiddenAmount');
+
+    paypalForm.addEventListener('submit', function () {
+        hiddenAmount.value = amountInput.value;
+    });
+    cardForm.addEventListener('submit', function () {
+        hiddenAmount.value = amountInput.value;
+    });
+</script>

@@ -1,0 +1,21 @@
+﻿@model Parcel_Tracking.Models.Parcel
+
+<div class="container mt-5">
+    <h2>Parcel Details</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Tracking Number: @Model.TrackingNumber</h5>
+            <p><strong>Status:</strong> @Model.Status</p>
+            <p><strong>Recipient Name:</strong> @Model.RecipientName</p>
+            <p><strong>Address:</strong> @Model.Address</p>
+            <p><strong>Shipping Method:</strong> @Model.ShippingMethod</p>
+            <p><strong>Weight:</strong> @Model.Weight kg</p>
+            <p><strong>Shipped At:</strong> @Model.ShippedAt?.ToString("yyyy-MM-dd")</p>
+            <p><strong>Delivered At:</strong> @Model.DeliveredAt?.ToString("yyyy-MM-dd")</p>
+            <p><strong>Created By:</strong> @Model.CreatedBy</p>
+            <p><strong>Created At:</strong> @Model.CreatedAt.ToString("yyyy-MM-dd")</p>
+            <p><strong>Recipient Email:</strong> @Model.RecipientEmail</p>
+        </div>
+    </div>
+    <a href="@Url.Action("Index", "Dashboard")" class="btn btn-secondary mt-3">Back to Dashboard</a>
+</div>

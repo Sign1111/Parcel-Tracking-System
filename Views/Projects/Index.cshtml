@@ -1,0 +1,190 @@
+﻿@model IEnumerable<Parcel_Tracking.Models.Project>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<h1>Database Only</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<style>
+    body {
+        background-color: #f4f6f9;
+        color: #333;
+    }
+
+    h1, h3 {
+        color: #007bff;
+    }
+
+    .card {
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .card-text {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    footer {
+        background-color: #333;
+        color: white;
+    }
+
+        footer p {
+            margin: 0;
+            padding: 1rem 0;
+        }
+
+    .list-group-item {
+        font-size: 1rem;
+    }
+
+    .sidebar {
+        background-color: #f8f9fa;
+        border-right: 2px solid #ddd;
+    }
+
+        .sidebar .nav-link {
+            padding: 1.2rem 1.5rem;
+        }
+
+            .sidebar .nav-link:hover {
+                background-color: #007bff;
+                color: white;
+            }
+
+            .sidebar .nav-link.active {
+                background-color: #007bff;
+                color: white;
+            }
+
+        .sidebar .nav-item {
+            margin-bottom: 1rem;
+        }
+
+            .sidebar .nav-item .bi {
+                margin-right: 8px;
+            }
+
+    @@media (max-width: 767px) {
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+            .sidebar.active {
+                display: block;
+            }
+    }
+</style>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Parcel_Tracking_Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Parcel_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Parcel_Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Parcel_Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Parcel_Final_Destination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver_Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LockoutEnd)
+            </th>
+            <th>Edit</th>
+            <th>Details</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parcel_Tracking_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parcel_Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parcel_Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parcel_Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parcel_Final_Destination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Driver_Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LockoutEnd)
+            </td>
+            <td>
+
+                    <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Details" class="btn btn-warning" asp-route-id="@item.Id">Details</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
