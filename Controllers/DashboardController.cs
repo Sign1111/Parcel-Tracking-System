@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Parcel_Tracking.Data;
 using Parcel_Tracking.Models;
 using System.Drawing.Printing;
 using System.Linq;  // Add this to your Controller file for LINQ functionality
@@ -8,6 +8,9 @@ using System.Linq;  // Add this to your Controller file for LINQ functionality
 
 namespace Parcel_Tracking.Controllers
 {
+
+    [Authorize]
+
     // DashboardController.cs
     public class DashboardController : Controller
     {

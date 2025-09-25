@@ -26,7 +26,16 @@
             border-radius: 50%;
         }
     </style>
+    <div class="container">
+    <div class="login-container">
+        <h2 class="login-title">@ViewData["Title"]</h2>
 
+        @if (HttpContext.Request.Query["forced"] == "true")
+        {
+            <div class="alert alert-warning">
+                ⚠️ You have been forcibly logged out by an administrator.
+            </div>
+        }
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
             <h1 class="text-center mb-4">@ViewData["Title"]</h1>
@@ -67,7 +76,15 @@
         </div>
     </div>
 </div>
+<script>
+    function toggleLoginPassword() {
+        const passwordInput = document.getElementById("loginPassword");
+        passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+    }
 
+
+
+</script>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

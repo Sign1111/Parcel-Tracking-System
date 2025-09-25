@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using System;
+
+
 
 namespace Parcel_Tracking.Controllers
 {
- 
+    [Authorize]
+
 
     public static class TrackingNumberGenerator
     {

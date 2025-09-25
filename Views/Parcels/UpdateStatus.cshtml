@@ -1,0 +1,28 @@
+﻿@model Parcel_Tracking.Models.Parcel
+
+@{
+    ViewData["Title"] = "Update Status";
+}
+
+<h2>Update Status for Parcel #@Model.TrackingNumber</h2> <!-- nicer identifier -->
+
+<form asp-action="UpdateStatus" method="post">
+    <!-- must include Id so the controller can find the record -->
+    <input type="hidden" asp-for="Id" />
+
+    <!-- you normally don’t need to post CreatedBy, it won’t change -->
+    <input type="hidden" asp-for="CreatedBy" />
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label">Status</label>
+        <select asp-for="Status" class="form-select">
+            <option value="In Progress">Shipped</option>
+            <option value="Approved">In Transit</option>
+            <option value="Completed">Delivered</option>
+            <option value="Rejected">Returned</option> 
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Update</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

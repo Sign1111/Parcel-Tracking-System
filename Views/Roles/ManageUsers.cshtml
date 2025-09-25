@@ -1,17 +1,24 @@
 ﻿@model IEnumerable<UserRolesViewModel>
 
-<h1 class="text-center">Web Users</h1> <!-- Centered Heading -->
+
+       
+    <p>
+    <a asp-controller="Admin" asp-action="Dashboard">
+        <i class="bi bi-speedometer2"></i> Admin Dashboard
+    </a>
+</p>
+<h1 class="text-center">Web Users</h1> 
 <table class="table">
     <thead>
         <tr>
-            <th>Id</th> <!-- Added ID Column -->
-            <th>User Name</th>
+            <th>Id</th> 
+            <th>User Name</th> 
             <th>Roles</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var user in Model)
-        {
+        { 
             <tr>
                 <td>@user.Id</td> <!-- Display User ID -->
                 <td>@user.UserName</td>

@@ -109,6 +109,8 @@
             text-align: center;
             padding: 10px;
         }
+
+
     </style>
 </head>
 
@@ -135,7 +137,7 @@
                             <a class="nav-link text-dark" asp-controller="Chat" asp-action="UserDashboard">Notification</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Chat" asp-action="UserInbox">Chat</a>
+                            <a class="nav-link text-dark" asp-controller="Chat" asp-action="UserInbox">Message</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="PayPal" asp-action="EnterAmount">Payment</a>
@@ -175,7 +177,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Chat" asp-action="AdminInbox">
-                        <i class="bi bi-envelope"></i> Admin Inbox
+                        <i class="bi bi-envelope"></i> Admin Chat List
                     </a>
                 </li>
                 <li class="nav-item">
@@ -245,7 +247,7 @@
         <!-- slider section -->
         <section class="slider_section ">
             <div class="slider_bg_box">
-                <img src="~/js/images/slider-bg.jpg" alt="">
+                <img src="https://media.gettyimages.com/id/1366805073/video/medium-angle-of-line-of-large-semi-trucks-or-eighteen-wheelers-parked-by-gas-or-diesel-pumps.jpg?s=640x640&k=20&c=wYi4r8ZBzKUo0wMqqWiyGYtwtUuPHrgy4qRmO7liNsE=" alt="">
             </div>
             <div id="customCarousel1" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
@@ -500,7 +502,7 @@
                         </h2>
                     </div>
                     <p>
-                        With [Parcel System], tracking your shipment is simple, fast, and hassle-free. Our advanced tracking system ensures that you stay informed at every step of your parcel’s journey, from pickup to delivery.
+                        With Parcel System, tracking your shipment is simple, fast, and hassle-free. Our advanced tracking system ensures that you stay informed at every step of your parcel’s journey, from pickup to delivery.
                     </p>
                     <!-- Search Bar -->
                     <div class="search-bar mb-4">
@@ -681,8 +683,8 @@
                 <div class="contact-form">
                     <div id="success"></div>
                     <form action="https://api.web3forms.com/submit" method="POST">
-                        <input type="hidden" name="access_key" value="8dd81a00-fb18-456f-bb9b-4732020348fa">
-                        <input type="hidden" name="from_name" value="Parcel System">
+                        <input type="hidden" name="access_key" value="74018bae-c039-4556-9bb1-e4074d0301ab">
+                        <input type="hidden" name="from_name" value="Parcel Tracking System">
                         <div class="control-group">
                             <label for="FullName">FullName</label>
                             <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Your Name" required="required" data-validation-required-message="Please enter your fullname" />
@@ -836,8 +838,61 @@
 </body>
 
 </html>
-
+<!-- Modal -->
+<div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="notificationModalLabel">New Notification</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalNotificationBody">
+                <!-- Dynamic content here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Force Logout Modal -->
+<div class="modal fade" id="forceLogoutModal" tabindex="-1" aria-labelledby="forceLogoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-dark">
+                <h5 class="modal-title" id="forceLogoutModalLabel">Forced Logout</h5>
+            </div>
+            <div class="modal-body">
+                You have been forcibly logged out by an administrator.<br>
+                Redirecting in <strong id="countdown">5</strong> seconds...
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
 <script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/notificationHub")
+        .build();
+
+    connection.on("ForceLogout", function () {
+        const modal = new bootstrap.Modal(document.getElementById('forceLogoutModal'));
+        modal.show();
+        let countdown = 5;
+        const countdownElement = document.getElementById('countdown');
+        const interval = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            if (countdown <= 0) {
+                clearInterval(interval);
+                window.location.href = "/Identity/Account/Logout";
+            }
+        }, 1000);
+    });
+
+    connection.start().catch(function (err) {
+        console.error(err.toString());
+    });
     function toggleSidebar() {
         const sidebar = document.getElementById("admin-sidebar");
         const overlay = document.getElementById("overlay");

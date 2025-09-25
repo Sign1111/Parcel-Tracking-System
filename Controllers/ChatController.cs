@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Parcel_Tracking.Data;
 using Parcel_Tracking.Models; // Ensure you include this if Message class is in this namespace
 
 
 namespace Parcel_Tracking.Controllers
 {
+    [Authorize]
+
     public class ChatController : Controller
     {
         private readonly ApplicationDbContext _context;

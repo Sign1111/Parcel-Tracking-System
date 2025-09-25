@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using Parcel_Tracking;
-using Parcel_Tracking.Data;
 
 
 [Authorize(Policy = "AdminOnly")]
@@ -68,7 +67,7 @@ public class AdminController : Controller
     [HttpPost]
     public async Task<IActionResult> EditRoles(EditRolesViewModel model)
     {
-        var user = await _userManager.FindByIdAsync(model.UserId); // Removed 'public'
+        var user = await _userManager.FindByIdAsync(model.UserId);
         if (user == null)
         {
             return NotFound("User not found");
@@ -87,6 +86,26 @@ public class AdminController : Controller
         {
             ModelState.AddModelError("", "Failed to assign new roles");
             return View(model);
+        }
+
+        // 🚨 Force logout if Admin role was removed
+        if (currentRoles.Contains("Admin") && !model.SelectedRoles.Contains("Admin"))
+        {
+            var sessionControl = await _context.UserSessionControls
+                .FirstOrDefaultAsync(x => x.UserId == user.Id);
+
+            if (sessionControl == null)
+            {
+                sessionControl = new UserSessionControl { UserId = user.Id, ForceLogout = true };
+                _context.UserSessionControls.Add(sessionControl);
+            }
+            else
+            {
+                sessionControl.ForceLogout = true;
+                _context.UserSessionControls.Update(sessionControl);
+            }
+
+            await _context.SaveChangesAsync();
         }
 
         TempData["SuccessMessage"] = "Roles updated successfully!";
@@ -166,6 +185,10 @@ public class AdminController : Controller
 
     }
 }
+
+
+
+
 
 
 

@@ -2,7 +2,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using Parcel_Tracking.Models;
+using Polly;
 
 namespace YourNamespace.Controllers
 {
@@ -11,11 +14,15 @@ namespace YourNamespace.Controllers
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly ApplicationDbContext _context;
+        private readonly IHubContext<NotificationHub> _hubContext;
 
-        public RolesController(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
+        public RolesController(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager, ApplicationDbContext context, IHubContext<NotificationHub> hubContext)
         {
             _roleManager = roleManager;
             _userManager = userManager;
+            _context = context;
+            _hubContext = hubContext;
         }
 
         // List all roles
@@ -79,8 +86,6 @@ namespace YourNamespace.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Admin/RemoveRoles/{id}")]
-
-
         public async Task<IActionResult> RemoveRoles(RemoveRolesViewModel model)
         {
             var user = await _userManager.FindByIdAsync(model.UserId);
@@ -91,10 +96,36 @@ namespace YourNamespace.Controllers
 
             if (model.SelectedRoles != null && model.SelectedRoles.Any())
             {
-                // Remove selected roles from the user
+                // Remove selected roles
                 var result = await _userManager.RemoveFromRolesAsync(user, model.SelectedRoles);
                 if (result.Succeeded)
                 {
+                    // ✅ Force logout if "Admin" was removed
+                    if (model.SelectedRoles.Contains("Admin"))
+                    {
+                        var session = await _context.UserSessionControls
+                            .FirstOrDefaultAsync(s => s.UserId == user.Id);
+
+                        if (session != null)
+                        {
+                            session.ForceLogout = true;
+                            _context.UserSessionControls.Update(session);
+
+                        }
+                        else
+                        {
+                            _context.UserSessionControls.Add(new UserSessionControl
+                            {
+                                UserId = user.Id,
+                                ForceLogout = true
+                            });
+                        }
+
+                        await _context.SaveChangesAsync();
+                        await _hubContext.Clients.User(user.Id).SendAsync("ForceLogout");
+
+                    }
+
                     TempData["SuccessMessage"] = "Selected roles have been removed successfully.";
                     return RedirectToAction("Dashboard", "Admin");
                 }
@@ -109,7 +140,7 @@ namespace YourNamespace.Controllers
                 ModelState.AddModelError("", "No roles selected for removal.");
             }
 
-            // Reload roles for the user in case of errors
+            // Reload roles in case of error
             var roles = await _userManager.GetRolesAsync(user);
             model.AssignedRoles = roles.Select(role => new SelectListItem
             {
@@ -119,6 +150,9 @@ namespace YourNamespace.Controllers
 
             return View(model);
         }
+
+
+
 
 
 
@@ -160,7 +194,7 @@ namespace YourNamespace.Controllers
             if (user != null && !string.IsNullOrWhiteSpace(roleName))
             {
                 await _userManager.AddToRoleAsync(user, roleName);
-                return RedirectToAction("Index");
+                return RedirectToAction("ManageUsers");
             }
             ModelState.AddModelError("", "Invalid user or role");
             return View();

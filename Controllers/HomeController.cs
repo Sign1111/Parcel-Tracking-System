@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Parcel_Tracking.Data;
 using Parcel_Tracking.Models;
 using System.Diagnostics;
 
@@ -37,7 +36,7 @@ namespace Parcel_Tracking.Controllers
                 }
                 else
                 {
-                    ViewData["Message"] = "Parcel not found.";
+                    ViewData["Message"] = "Your Parcel not found.";
                 }
             }
 

@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Parcel_Tracking;
 using Parcel_Tracking.Controllers;
-using Parcel_Tracking.Data;
 using Parcel_Tracking.Models;
 using Microsoft.Extensions.Options;
 using Parcel_Tracking.Hubs;
+using Microsoft.AspNetCore.SignalR;
+using Parcel_Tracking.Middleware;
+
 
 
 
@@ -28,16 +30,16 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
-
+builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 
 
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -51,19 +53,20 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
 
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddSignalR(); // Add SignalR service
 
 
 builder.Services.AddSingleton<PayPalService>();
 
 
+
+
+builder.Services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
+builder.Services.AddSignalR();
+builder.Services.AddSession();
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
 });
-
-builder.Services.AddControllersWithViews();
-builder.Services.AddSignalR();
 
 
 // Make configuration accessible for DI
@@ -93,7 +96,6 @@ else
 app.UseSession();
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 
 app.UseStaticFiles(); // This is crucial for serving static files like images
 
@@ -103,6 +105,7 @@ app.MapControllers(); // Ensure controllers are mapped
 
 
 app.UseAuthentication();
+app.UseMiddleware<ForceLogoutMiddleware>();
 
 app.UseAuthorization();
 
@@ -115,7 +118,8 @@ app.MapHub<ChatHub>("/chatHub");
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+app.MapHub<NotificationHub>("/notificationHub");
+app.MapHub<LogoutHub>("/logoutHub");
 app.MapRazorPages();
 app.MapDefaultControllerRoute();
 

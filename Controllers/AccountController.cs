@@ -30,6 +30,12 @@ public class AccountController : Controller
         ModelState.AddModelError("", "Invalid login attempt");
         return View();
     }
+    [HttpGet]
+    public async Task<IActionResult> ForcedLogout()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Login", new { forced = "true" });
+    }
 
     public async Task<IActionResult> Logout()
     {

@@ -16,7 +16,7 @@ public class PayPalService
         _clientId = configuration["Adbr31ad0AYUrVSj-HJAwaYy6i5t96IxDEIGke-hTJwLGi_-7drKkZY65AxhEMHEAbKkvi2D8_zMOS6l"];
         _clientSecret = configuration["EGS5E9U60WaSjem3xcd2MAVXfBeMdqVe0gbRu80Z7z1QhpAEAut2k0WHmt8JPXPA9Ubtjit-dJ085aLd"];
         _mode = configuration["sandbox"];
-        _options = options.Value;
+        _options = options.Value;   
 
     }
 

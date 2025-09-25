@@ -298,7 +298,6 @@ C:\Users\IITA-MISTRNG\source\repos\Parcel Tracking\Parcel Tracking\obj\Debug\net
 C:\Users\IITA-MISTRNG\source\repos\Parcel Tracking\Parcel Tracking\obj\Debug\net7.0\ParcelTracking.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\IITA-MISTRNG\source\repos\Parcel Tracking\Parcel Tracking\obj\Debug\net7.0\ParcelTracking.RazorAssemblyInfo.cache
 C:\Users\IITA-MISTRNG\source\repos\Parcel Tracking\Parcel Tracking\obj\Debug\net7.0\ParcelTracking.RazorAssemblyInfo.cs
-C:\Users\IITA-MISTRNG\source\repos\Parcel Tracking\Parcel Tracking\obj\Debug\net7.0\ParcelTracking.sourcelink.json
 C:\Users\IITA-MISTRNG\source\repos\Parcel Tracking\Parcel Tracking\obj\Debug\net7.0\staticwebassets.build.json
 C:\Users\IITA-MISTRNG\source\repos\Parcel Tracking\Parcel Tracking\obj\Debug\net7.0\staticwebassets.development.json
 C:\Users\IITA-MISTRNG\source\repos\Parcel Tracking\Parcel Tracking\obj\Debug\net7.0\staticwebassets\msbuild.ParcelTracking.Microsoft.AspNetCore.StaticWebAssets.props

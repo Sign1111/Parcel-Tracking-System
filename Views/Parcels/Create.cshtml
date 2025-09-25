@@ -4,13 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<h1>Create</h1>
-
-<h4>Parcel</h4>
+<h1>Create New Parcel</h1>
 <hr />
+
 <style>
     .styled-dropdown {
         border: 2px solid #007bff;
@@ -29,72 +25,80 @@
 </style>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
-                <label asp-for="CreatedBy" class="control-label"></label>
-                <input asp-for="CreatedBy" class="form-control" />
+                <label asp-for="CreatedBy"></label>
+                <input asp-for="CreatedBy" class="form-control" readonly />
                 <span asp-validation-for="CreatedBy" class="text-danger"></span>
             </div>
+
+
             <div class="form-group">
-                <label asp-for="CreatedAt" class="control-label"></label>
-                <input asp-for="CreatedAt" class="form-control" />
+                <label asp-for="CreatedAt"></label>
+                <input asp-for="CreatedAt" type="date" class="form-control" />
                 <span asp-validation-for="CreatedAt" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="TrackingNumber" class="control-label"></label>
-                <input asp-for="TrackingNumber" class="form-control" />
-                <button onclick="displayTrackingNumber()">Generate Tracking Number</button>
-                <p>Tracking Number: <span id="trackingNumber"></span></p>
 
+            <div class="form-group">
+                <label asp-for="TrackingNumber"></label>
+                <div class="input-group">
+                    <input asp-for="TrackingNumber" id="TrackingNumber" class="form-control" readonly />
+                    <button type="button" class="btn btn-secondary" onclick="displayTrackingNumber()">Generate</button>
+                </div>
                 <span asp-validation-for="TrackingNumber" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="RecipientName" class="control-label"></label>
+                <label asp-for="RecipientName"></label>
                 <input asp-for="RecipientName" class="form-control" />
                 <span asp-validation-for="RecipientName" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
+                <label asp-for="Address"></label>
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Status" class="control-label">Status</label>
-                <select asp-for="Status" class="form-control styled-dropdown">
-                    @foreach (var status in ViewBag.StatusOptions)
-                    {
-                        <option value="@status">@status</option>
-                    }
-                </select>
+                <input asp-for="Status" type="hidden" />
+                <p><strong>Status:</strong> @Model.Status</p>
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Weight" class="control-label"></label>
+                <label asp-for="Weight"></label>
                 <input asp-for="Weight" class="form-control" />
                 <span asp-validation-for="Weight" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="ShippingMethod" class="control-label"></label>
                 <input asp-for="ShippingMethod" class="form-control" />
                 <span asp-validation-for="ShippingMethod" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="ShippedAt" class="control-label"></label>
-                <input asp-for="ShippedAt" class="form-control" />
+                <label asp-for="ShippedAt"></label>
+                <input asp-for="ShippedAt" type="date" class="form-control" />
                 <span asp-validation-for="ShippedAt" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="DeliveredAt" class="control-label"></label>
-                <input asp-for="DeliveredAt" class="form-control" />
+                <label asp-for="DeliveredAt"></label>
+                <input asp-for="DeliveredAt" type="date" class="form-control" />
                 <span asp-validation-for="DeliveredAt" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="RecipientEmail" class="control-label"></label>
-                <input asp-for="RecipientEmail" class="form-control" />
+                <label asp-for="RecipientEmail"></label>
+                <input asp-for="RecipientEmail" type="email" class="form-control" />
                 <span asp-validation-for="RecipientEmail" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -107,19 +111,19 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function generateTrackingNumber() {
+            const prefix = "TRK";
+            const datePart = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+            const randomPart = Math.floor(100000 + Math.random() * 900000);
+            return `${prefix}-${datePart}-${randomPart}`;
+        }
+        function displayTrackingNumber() {
+            const trackingNumber = generateTrackingNumber();
+            document.getElementById("TrackingNumber").value = trackingNumber;
+        }
+    </script>
 }
-
-<script>
-    function generateTrackingNumber() {
-        const prefix = "TRK";
-        const datePart = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-        const randomPart = Math.floor(100000 + Math.random() * 900000);
-        return `${prefix}-${datePart}-${randomPart}`;
-    }
-
-    function displayTrackingNumber() {
-        const trackingNumber = generateTrackingNumber();
-        document.getElementById("trackingNumber").textContent = trackingNumber;
-    }
-</script>
